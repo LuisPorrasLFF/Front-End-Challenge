@@ -5,5 +5,14 @@ module.exports = {
     '@storybook/addon-actions',
     '@storybook/addon-links',
     '@storybook/preset-typescript',
+    '@storybook/addon-knobs/register',
+    {
+      name: '@storybook/addon-storysource',
+      options: {
+        loaderOptions: {
+          prettierConfig: { parser: 'typescript' },
+        },
+      },
+    }
   ],
 };
