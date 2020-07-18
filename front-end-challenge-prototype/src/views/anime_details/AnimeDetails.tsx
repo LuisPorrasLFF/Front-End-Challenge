@@ -1,8 +1,8 @@
-import React from 'react';
-import 'antd/dist/antd.css';
-import { Typography } from 'antd';
+import React from "react";
+import "antd/dist/antd.css";
+import { Typography } from "antd";
 
-function AnimeDetails() {
+function AnimeDetails(): JSX.Element {
   const { Title } = Typography;
 
   return (

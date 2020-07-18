@@ -1,14 +1,9 @@
-import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import React from "react";
 
-import Routes from './views/shared/Routes';
+import Routes from "./views/shared/Routes";
 
-function App() {
-  return (
-    <Router>
-      <Routes />
-    </Router>
-  );
+function App(): JSX.Element {
+  return <Routes />;
 }
 
 export default App;

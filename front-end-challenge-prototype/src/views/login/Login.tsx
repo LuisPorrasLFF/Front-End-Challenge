@@ -1,8 +1,8 @@
-import React from 'react';
-import 'antd/dist/antd.css';
-import { Typography } from 'antd';
+import React from "react";
+import "antd/dist/antd.css";
+import { Typography } from "antd";
 
-function Login() {
+function Login(): JSX.Element {
   const { Title } = Typography;
 
   return (
