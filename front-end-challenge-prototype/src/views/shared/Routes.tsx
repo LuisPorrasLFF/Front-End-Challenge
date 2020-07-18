@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Home from "../home/Home";
@@ -8,17 +8,33 @@ import AnimeSearch from "../anime_search/AnimeSearch";
 import AnimeDetails from "../anime_details/AnimeDetails";
 import CharacterSearch from "../character_search/CharacterSearch";
 import CharacterDetails from "../character_details/CharacterDetails";
-import Layout from "./Layout";
+import Layout from "./_Layout";
 
 function Routes(): JSX.Element {
-  const [isLoggedIn, setLogged] = useState<boolean>(false);
-
-  const routes = <Switch></Switch>;
+  const [isLoggedIn, setLoggedIn] = useState<boolean>(true);
 
   return (
-    <Layout isLoggedIn>
-      <Router>
-        {!isLoggedIn && (
+    <Router>
+      <Layout isLoggedIn={isLoggedIn}>
+        {isLoggedIn ? (
+          <Switch>
+            <Route path="/anime" exact>
+              <AnimeSearch />
+            </Route>
+            <Route path="/anime/:id">
+              <AnimeDetails />
+            </Route>
+            <Route path="/character" exact>
+              <CharacterSearch />
+            </Route>
+            <Route path="/character/:id">
+              <CharacterDetails />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        ) : (
           <Switch>
             <Route path="/login">
               <Login />
@@ -31,27 +47,8 @@ function Routes(): JSX.Element {
             </Route>
           </Switch>
         )}
-        {isLoggedIn && (
-          <Switch>
-            <Route path="/anime">
-              <AnimeSearch />
-            </Route>
-            <Route path="/animedetails">
-              <AnimeDetails />
-            </Route>
-            <Route path="/character">
-              <CharacterSearch />
-            </Route>
-            <Route path="/characterdetails">
-              <CharacterDetails />
-            </Route>
-            <Route path="/">
-              <Home />
-            </Route>
-          </Switch>
-        )}
-      </Router>
-    </Layout>
+      </Layout>
+    </Router>
   );
 }
 

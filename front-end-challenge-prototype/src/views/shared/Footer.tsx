@@ -1,7 +1,9 @@
 import React from "react";
 
 function Footer(): JSX.Element {
-  return <h2>Footer</h2>;
+  return(
+    <p style={{textAlign: "center"}}>OurAnimeList.net is a property of OurAnimeList, LLC. ©2020 All Rights Reserved.</p>
+  );
 }
 
 export default Footer;

@@ -1,11 +1,11 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
-interface INavbarProps{
-  isLoggedIn: boolean;
+interface INavbarProps {
+  children: ReactNode;
 }
 
 function Navbar(props: INavbarProps): JSX.Element {
-  return <h2>Navbar</h2>;
+  return <div>{props.children}</div>;
 }
 
 export default Navbar;
