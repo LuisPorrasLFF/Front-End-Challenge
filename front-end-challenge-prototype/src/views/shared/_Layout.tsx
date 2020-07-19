@@ -15,21 +15,21 @@ function _Layout(props: ILayoutProds): JSX.Element {
       <Navbar>
         {props.isLoggedIn ? (
           <ul>
-            <Link to="/anime">
-              <li>Anime</li>
-            </Link>
-            <Link to="/character">
-              <li>Character</li>
-            </Link>
+            <li>
+              <Link to="/anime">Anime</Link>
+            </li>
+            <li>
+              <Link to="/character">Characters</Link>
+            </li>
           </ul>
         ) : (
           <ul>
-            <Link to="/login">
-              <li>Login</li>
-            </Link>
-            <Link to="/register">
-              <li>Sign Up</li>
-            </Link>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+            <li>
+              <Link to="/register">Sign Up</Link>
+            </li>
           </ul>
         )}
       </Navbar>
