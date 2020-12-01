@@ -13,23 +13,20 @@ export const NavbarStyle = styled.div`
     margin: 0;
     padding: 0;
     display: flex;
-  }
 
-  li {
-    width: fit-content;
-    padding: 0 0.5rem 0 0.5rem;
-  }
-
-  li:hover {
-    background-color: black;
-  }
-
-  li:hover a {
-    color: red;
-  }
-
-  a {
-    color: black;
+    li {
+      width: fit-content;
+      padding: 0 0.5rem 0 0.5rem;
+      &:hover {
+        background-color: black;
+        a {
+          color: red;
+        }
+      }
+      a {
+        color: black;
+      }
+    }
   }
 `;
 
