@@ -1,8 +1,10 @@
 import React, { ReactNode } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { INavbarTab } from "../../utilities/INavbarTab";
 
 interface INavbarProps {
-  children: ReactNode;
+  navbarTabs: INavbarTab[];
 }
 
 export const NavbarStyle = styled.div`
@@ -31,7 +33,17 @@ export const NavbarStyle = styled.div`
 `;
 
 function Navbar(props: INavbarProps): JSX.Element {
-  return <NavbarStyle>{props.children}</NavbarStyle>;
+  return (
+    <NavbarStyle>
+      <ul>
+        {props.navbarTabs.map(
+          function(navbarTab: INavbarTab, i: number): ReactNode{
+            return <li key={i}><Link to={navbarTab.to}>{navbarTab.name}</Link></li>
+          }
+        )}
+      </ul>
+    </NavbarStyle>
+  );
 }
 
 export default Navbar;

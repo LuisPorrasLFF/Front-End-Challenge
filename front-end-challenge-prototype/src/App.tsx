@@ -10,16 +10,17 @@ import AnimeDetails from "./views/anime_details/AnimeDetails";
 import CharacterSearch from "./views/character_search/CharacterSearch";
 import CharacterDetails from "./views/character_details/CharacterDetails";
 import Layout from "./views/shared/Layout";
+import { INavbarTab } from "./utilities/INavbarTab";
 
 export const ContainerStyle = styled.div`
   height: 100vh
 `;
 
 function App(): JSX.Element {
-  const [isLoggedIn, setLoggedIn] = useState<boolean>(true);
+  const [isLoggedIn, setLoggedIn] = useState<boolean>(false);
   return (
     <Router>
-      <Layout>
+      <Layout navbarTabs={getNavTabs(isLoggedIn)}>
         <ContainerStyle>
           {isLoggedIn ? (
             <Switch>
@@ -40,22 +41,39 @@ function App(): JSX.Element {
               </Route>
             </Switch>
           ) : (
-            <Switch>
-              <Route path="/login">
-                <Login />
-              </Route>
-              <Route path="/register">
-                <Register />
-              </Route>
-              <Route path="/">
-                <Home />
-              </Route>
-            </Switch>
-          )}
+              <Switch>
+                <Route path="/login">
+                  <Login />
+                </Route>
+                <Route path="/register">
+                  <Register />
+                </Route>
+                <Route path="/">
+                  <Home />
+                </Route>
+              </Switch>
+            )}
         </ContainerStyle>
       </Layout>
     </Router>
   );
+}
+
+function getNavTabs(isLoggedIn: boolean): INavbarTab[] {
+  let result: INavbarTab[] = [];
+  if (isLoggedIn) {
+    result = [
+      { name: "Anime", to: "/anime" }, 
+      { name: "Characters", to: "/character" }
+    ];
+  }
+  else {
+    result = [
+      { name: "Login", to: "/login" }, 
+      { name: "Sign Up", to: "/register" }
+    ];
+  }
+  return result;
 }
 
 export default App;
